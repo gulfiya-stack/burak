@@ -7,6 +7,7 @@
     "start": "ts-node src/server.ts",
     "start:dev": "nodemon --exec ts-node src/server.ts",
     "build": "tsc",
+    "train": "ts-node src/train.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "MIT",
@@ -19,5 +20,14 @@
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.2.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gulfiya-stack/burak.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/gulfiya-stack/burak/issues"
+  },
+  "homepage": "https://github.com/gulfiya-stack/burak#readme"
 }
