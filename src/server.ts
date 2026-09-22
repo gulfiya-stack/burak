@@ -18,3 +18,5 @@ dotenv.config();
 // Tekshirish log
 // console.log("PORT: ", process.env.PORT);
 // console.log("MONGO_URL: ", process.env.MONGO_URL);
+
+// CLUSTER->Database->Collection->Document 
