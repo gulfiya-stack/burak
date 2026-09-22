@@ -1,5 +1,4 @@
 //TASK-L
-
 function reverseSentence(text: string) {
     let words = text.split(" ");
     let result = "";
