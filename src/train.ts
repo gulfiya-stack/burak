@@ -1,16 +1,47 @@
+// TASK N
+
+// Stringni palindrom ekanligini aniqlab true yoki false qaytarsin.
+
+// Masalan: palindromCheck("dad") return true
+
+function palindromCheck(text: string): boolean {
+    const result = text.toLowerCase();
+
+
+    const reversed = result
+        .split("")
+        .reverse()
+        .join("");
+    if (result === reversed) {
+        console.log("True");
+        return true;
+
+    }
+    else {
+        console.log("False");
+        return false;
+
+    }
+}
+
+palindromCheck("dad");
+palindromCheck("Kayak");
+palindromCheck("Panama")
+
+
 //TASK M
 
 // Array ichidagi har bir raqam uchun raqamning o'zi va uning kvadratidan tashkil topgan object hosil qilib qaytarsin.
 
 // Masalan: getSquareNumbers([1, 2, 3]) return [{number: 1, square: 1}, ...]
 
-function getSquareNumbers(list: number[]) {
-    for (let i = 0; i < list.length; i++) {
-        console.log(`number: ${list[i]}, square: ${list[i] * list[i]} `);
-    }
+// function getSquareNumbers(list: number[]) {
+//     for (let i = 0; i < list.length; i++) {
+//         console.log(`number: ${list[i]}, square: ${list[i] * list[i]} `);
+//     }
 
-}
-getSquareNumbers([1, 2, 3]);
+// }
+// getSquareNumbers([1, 2, 3]);
 
 //TASK-L
 // function reverseSentence(text: string) {
