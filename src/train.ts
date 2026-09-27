@@ -5,7 +5,7 @@ Project Standards
 - Naming standards
    function, methods, variables => CAMEL case --- goHome
    class => PASCAL case --- MemberService
-   folder => KEBAB case
+   folder, file => KEBAB case
    css => SNAKE   --- button_style
 - Error handling
 */

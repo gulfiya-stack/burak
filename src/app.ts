@@ -1,7 +1,7 @@
 import express from 'express';
 import path from 'path';
 import router from "./router";
-import routerAdmin from "./routerAdmin";
+import routerAdmin from "./router-admin";
 import morgan from "morgan";
 import { MORGAN_FORMAT } from './libs/config';
 
@@ -20,7 +20,6 @@ app.set("view engine", "ejs");
 /**3-VIEWS**/
 app.set("views", path.join(__dirname, 'views'));
 app.set("view engine", "ejs");
-
 /**4-ROUTERS**/
 app.use("/admin", routerAdmin); //EJS, BSSR
 app.use("/", router); // React // (Design) Middleware pattern
