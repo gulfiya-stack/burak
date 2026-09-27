@@ -1,3 +1,16 @@
+
+/* 
+Project Standards 
+-Logging Standards 
+- Naming standards
+   function, methods, variables => CAMEL case --- goHome
+   class => PASCAL case --- MemberService
+   folder => KEBAB case
+   css => SNAKE   --- button_style
+- Error handling
+*/
+
+
 // TASK N
 
 // Stringni palindrom ekanligini aniqlab true yoki false qaytarsin.
