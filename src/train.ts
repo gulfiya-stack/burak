@@ -1,7 +1,21 @@
+// Task -O
+function calculateSumOfNumbers(list: any[]) {
+    let sum = 0;
 
-/* 
-Project Standards 
--Logging Standards 
+    for (let i = 0; i < list.length; i++) {
+        if (typeof list[i] === "number") {
+            sum = sum + list[i];
+        }
+    }
+
+    console.log(sum);
+}
+
+calculateSumOfNumbers([10, "10", { son: 10 }, true, 35]);
+
+/*
+Project Standards
+-Logging Standards
 - Naming standards
    function, methods, variables => CAMEL case --- goHome
    class => PASCAL case --- MemberService
@@ -9,7 +23,11 @@ Project Standards
    css => SNAKE   --- button_style
 - Error handling
 */
-
+/**
+Traditional API -> API
+Rest API
+GraphQL API
+ */
 
 // TASK N
 
@@ -17,29 +35,29 @@ Project Standards
 
 // Masalan: palindromCheck("dad") return true
 
-function palindromCheck(text: string): boolean {
-    const result = text.toLowerCase();
+// function palindromCheck(text: string): boolean {
+//     const result = text.toLowerCase();
 
 
-    const reversed = result
-        .split("")
-        .reverse()
-        .join("");
-    if (result === reversed) {
-        console.log("True");
-        return true;
+//     const reversed = result
+//         .split("")
+//         .reverse()
+//         .join("");
+//     if (result === reversed) {
+//         console.log("True");
+//         return true;
 
-    }
-    else {
-        console.log("False");
-        return false;
+//     }
+//     else {
+//         console.log("False");
+//         return false;
 
-    }
-}
+//     }
+// }
 
-palindromCheck("dad");
-palindromCheck("Kayak");
-palindromCheck("Panama")
+// palindromCheck("dad");
+// palindromCheck("Kayak");
+// palindromCheck("Panama")
 
 
 //TASK M
