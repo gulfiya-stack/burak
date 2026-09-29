@@ -1,17 +1,35 @@
-// Task -O
-function calculateSumOfNumbers(list: any[]) {
-    let sum = 0;
+// Task-P
+// Objectni nested array sifatida convert qilib qaytarsin.
 
-    for (let i = 0; i < list.length; i++) {
-        if (typeof list[i] === "number") {
-            sum = sum + list[i];
-        }
+// Masalan: objectToArray({a: 10, b: 20}) return [["a", 10], ["b", 20]]
+function objectToArray(a: { [key: string]: any }) {
+    let list: any[] = [];
+    const keys = Object.keys(a);
+    for (let i = 0; i < keys.length; i++) {
+
+        list.push([keys[i], a[keys[i]]]);
     }
-
-    console.log(sum);
+    console.log(list);
+    return list;
 }
+objectToArray({ a: 10, b: 20 });
 
-calculateSumOfNumbers([10, "10", { son: 10 }, true, 35]);
+
+
+// Task -O
+// function calculateSumOfNumbers(list: any[]) {
+//     let sum = 0;
+
+//     for (let i = 0; i < list.length; i++) {
+//         if (typeof list[i] === "number") {
+//             sum = sum + list[i];
+//         }
+//     }
+
+//     console.log(sum);
+// }
+
+// calculateSumOfNumbers([10, "10", { son: 10 }, true, 35]);
 
 /*
 Project Standards
