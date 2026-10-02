@@ -16,6 +16,7 @@ objectToArray({ a: 10, b: 20 });
 
 
 
+
 // Task -O
 // function calculateSumOfNumbers(list: any[]) {
 //     let sum = 0;
@@ -46,6 +47,14 @@ Traditional API -> API
 Rest API
 GraphQL API
  */
+
+/**
+Traditional Frontend Development (FD)
+==> SSR (Adminka) => EJS
+Modern Frontend Development
+===> SPA (Users) => React Library
+ */
+
 
 // TASK N
 
