@@ -1,18 +1,42 @@
+// TASK Q
+
+// Objectda berilgan string propertysi borligini tekshirsin.
+
+// Masalan: hasProperty({name: "BMW"}, "name") return true
+
+function hasProperty(
+    obj: { [key: string]: any },
+    name: string
+): boolean {
+    const keys = Object.keys(obj);
+
+    for (let i = 0; i < keys.length; i++) {
+        if (keys[i] === name) {
+            console.log("True");
+            return true;
+        }
+    }
+    console.log("False");
+    return false;
+}
+
+hasProperty({ name: "BMW" }, "name");
+
 // Task-P
 // Objectni nested array sifatida convert qilib qaytarsin.
 
 // Masalan: objectToArray({a: 10, b: 20}) return [["a", 10], ["b", 20]]
-function objectToArray(a: { [key: string]: any }) {
-    let list: any[] = [];
-    const keys = Object.keys(a);
-    for (let i = 0; i < keys.length; i++) {
+// function objectToArray(a: { [key: string]: any }) {
+//     let list: any[] = [];
+//     const keys = Object.keys(a);
+//     for (let i = 0; i < keys.length; i++) {
 
-        list.push([keys[i], a[keys[i]]]);
-    }
-    console.log(list);
-    return list;
-}
-objectToArray({ a: 10, b: 20 });
+//         list.push([keys[i], a[keys[i]]]);
+//     }
+//     console.log(list);
+//     return list;
+// }
+// objectToArray({ a: 10, b: 20 });
 
 
 
