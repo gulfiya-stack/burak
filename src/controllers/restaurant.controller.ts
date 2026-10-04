@@ -3,7 +3,8 @@ import { T } from "../libs/types/common"; // {T, test}
 import MemberService from "../models/Member.service";
 import { AdminRequest, LoginInput, MemberInput } from "../libs/types/member";
 import { MemberType } from "../libs/enums/member.enum";
-
+import { Message } from "../libs/Errors";
+const memberService = new MemberService();
 
 const restaurantController: T = {};
 restaurantController.goHome = (req: Request, res: Response) => {
@@ -51,8 +52,6 @@ restaurantController.processSignup = async (req: AdminRequest, res: Response) =>
 
         const newMember: MemberInput = req.body;
         newMember.memberType = MemberType.RESTAURANT;
-
-        const memberService = new MemberService();
         const result = await memberService.processSignup(newMember);
 
         //TODO: SESSIONS AUTHENTICATION
@@ -69,13 +68,12 @@ restaurantController.processSignup = async (req: AdminRequest, res: Response) =>
 };
 
 
-restaurantController.processLogin = async (req: AdminRequest, res: Response) => {
+restaurantController.processLogin = async (
+    req: AdminRequest,
+    res: Response) => {
     try {
         console.log('processLogin');
-        console.log(req.body);
         const input: LoginInput = req.body;
-
-        const memberService = new MemberService();
         const result = await memberService.processLogin(input);
         //TODO: SESSIONS AUTHENTICATION
         req.session.member = result;
@@ -89,5 +87,20 @@ restaurantController.processLogin = async (req: AdminRequest, res: Response) => 
     }
 
 };
+restaurantController.checkAuthSession = async (
+    req: AdminRequest,
+    res: Response) => {
+    try {
+        console.log("checkAuthSession");
 
+        if (req.session?.member) {
+            res.send(`Hi, <script>alert("${req.session.member.memberNick}")</script>`);
+        } else {
+            res.send(`<script>alert("${Message.NOT_AUTHENTICATED}")</script>`);
+        }
+    } catch (err) {
+        console.log("Error, checkAuthSession:", err);
+        res.send(err);
+    }
+};
 export default restaurantController;
