@@ -1,8 +1,9 @@
 import { Request, Response } from "express";
 import { T } from "../libs/types/common"; // {T, test}
 import MemberService from "../models/Member.service";
-import { LoginInput, MemberInput } from "../libs/types/member";
+import { AdminRequest, LoginInput, MemberInput } from "../libs/types/member";
 import { MemberType } from "../libs/enums/member.enum";
+
 
 const restaurantController: T = {};
 restaurantController.goHome = (req: Request, res: Response) => {
@@ -43,24 +44,23 @@ restaurantController.getLogin = (req: Request, res: Response) => {
 
 
 
-restaurantController.processSignup = async (req: Request, res: Response) => {
-    // restaurantController.processSignup = (req: Request, res: Response) => {
+restaurantController.processSignup = async (req: AdminRequest, res: Response) => {
     try {
         console.log('processSignup');
-        // console.log('body:', req.body);
-        //Service module start usage
+
 
         const newMember: MemberInput = req.body;
         newMember.memberType = MemberType.RESTAURANT;
 
         const memberService = new MemberService();
-        // await memberService.processSignup();
         const result = await memberService.processSignup(newMember);
 
         //TODO: SESSIONS AUTHENTICATION
+        req.session.member = result;
+        req.session.save(function () {
+            res.send(result);
 
-        // memberService.processSignup();
-        res.send(result);
+        });
     } catch (err) {
         console.log("Error, processSignup: ", err);
         res.send(err);
@@ -69,7 +69,7 @@ restaurantController.processSignup = async (req: Request, res: Response) => {
 };
 
 
-restaurantController.processLogin = async (req: Request, res: Response) => {
+restaurantController.processLogin = async (req: AdminRequest, res: Response) => {
     try {
         console.log('processLogin');
         console.log(req.body);
@@ -78,7 +78,11 @@ restaurantController.processLogin = async (req: Request, res: Response) => {
         const memberService = new MemberService();
         const result = await memberService.processLogin(input);
         //TODO: SESSIONS AUTHENTICATION
-        res.send(result);
+        req.session.member = result;
+        req.session.save(function () {
+            res.send(result);
+
+        });
     } catch (err) {
         console.log("Error, processLogin: ", err);
         res.send(err);
