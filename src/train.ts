@@ -1,26 +1,48 @@
+// TASK R
+
+// "1 + 2" ko'rinishidagi stringni hisoblab number qaytarsin.
+
+// Masalan: calculate("1 + 3") return 4
+
+function calculate(a: string) {
+    let res = a.split("");
+    let total = 0;
+
+    for (let i = 0; i < a.length; i++) {
+        if (res[i] >= "0" && res[i] <= "9") {
+            let number = Number(res[i]);
+            total = total + number;
+        }
+    }
+
+    console.log("Total:", total);
+    return total;
+}
+
+calculate("1 + 3");
 // TASK Q
 
 // Objectda berilgan string propertysi borligini tekshirsin.
 
 // Masalan: hasProperty({name: "BMW"}, "name") return true
 
-function hasProperty(
-    obj: { [key: string]: any },
-    name: string
-): boolean {
-    const keys = Object.keys(obj);
+// function hasProperty(
+//     obj: { [key: string]: any },
+//     name: string
+// ): boolean {
+//     const keys = Object.keys(obj);
 
-    for (let i = 0; i < keys.length; i++) {
-        if (keys[i] === name) {
-            console.log("True");
-            return true;
-        }
-    }
-    console.log("False");
-    return false;
-}
+//     for (let i = 0; i < keys.length; i++) {
+//         if (keys[i] === name) {
+//             console.log("True");
+//             return true;
+//         }
+//     }
+//     console.log("False");
+//     return false;
+// }
 
-hasProperty({ name: "BMW" }, "name");
+// hasProperty({ name: "BMW" }, "name");
 
 // Task-P
 // Objectni nested array sifatida convert qilib qaytarsin.
@@ -143,3 +165,5 @@ Modern Frontend Development
 // }
 
 // reverseSentence("we like coding!");
+
+
