@@ -1,25 +1,45 @@
+// TASK S
+
+// Array ichidagi tushib qolgan sonni topib qaytarsin.
+
+// Masalan: missingNumber([3, 0, 1]) return 2
+
+function missingNumber(arr: number[]) {
+
+    for (let i = 0; i <= arr.length; i++) {
+        if (!arr.includes(i)) {
+            console.log("The missing number =", i);
+            return i;
+        }
+    }
+}
+
+missingNumber([3, 0, 1]);
+
+
+
 // TASK R
 
 // "1 + 2" ko'rinishidagi stringni hisoblab number qaytarsin.
 
 // Masalan: calculate("1 + 3") return 4
 
-function calculate(a: string) {
-    let res = a.split("");
-    let total = 0;
+// function calculate(a: string) {
+//     let res = a.split("");
+//     let total = 0;
 
-    for (let i = 0; i < a.length; i++) {
-        if (res[i] >= "0" && res[i] <= "9") {
-            let number = Number(res[i]);
-            total = total + number;
-        }
-    }
+//     for (let i = 0; i < a.length; i++) {
+//         if (res[i] >= "0" && res[i] <= "9") {
+//             let number = Number(res[i]);
+//             total = total + number;
+//         }
+//     }
 
-    console.log("Total:", total);
-    return total;
-}
+//     console.log("Total:", total);
+//     return total;
+// }
 
-calculate("1 + 3");
+// calculate("1 + 3");
 // TASK Q
 
 // Objectda berilgan string propertysi borligini tekshirsin.
