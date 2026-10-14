@@ -36,7 +36,7 @@ const productSchema = new Schema({
     },
 
     productVolume: {
-        type: String,
+        type: Number,
         enum: ProductVolume,
         default: ProductVolume.ONE,
     },
