@@ -1,20 +1,44 @@
+// TASK T
+
+// Ikkita arrayni qabul qilib, ularni birlashtirib tartiblangan holda qaytarsin.
+
+// Masalan: mergeSortedArrays([0, 3, 4], [4, 6]) return [0, 3, 4, 4, 6]
+
+function mergeSortedArrays(array1: number[], array2: number[]): number[] {
+    let result: number[] = [];
+
+    for (let i = 0; i < array1.length; i++) {
+        result.push(array1[i]);
+    }
+
+    for (let i = 0; i < array2.length; i++) {
+        result.push(array2[i]);
+    }
+    console.log(result.sort((a, b) => a - b));
+    return result;
+}
+
+mergeSortedArrays([0, 3, 4], [4, 6]);
+
+// [0, 3, 4, 4, 6]
+
 // TASK S
 
 // Array ichidagi tushib qolgan sonni topib qaytarsin.
 
 // Masalan: missingNumber([3, 0, 1]) return 2
 
-function missingNumber(arr: number[]) {
+// function missingNumber(arr: number[]) {
 
-    for (let i = 0; i <= arr.length; i++) {
-        if (!arr.includes(i)) {
-            console.log("The missing number =", i);
-            return i;
-        }
-    }
-}
+//     for (let i = 0; i <= arr.length; i++) {
+//         if (!arr.includes(i)) {
+//             console.log("The missing number =", i);
+//             return i;
+//         }
+//     }
+// }
 
-missingNumber([3, 0, 1]);
+// missingNumber([3, 0, 1]);
 
 
 
