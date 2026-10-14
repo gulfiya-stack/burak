@@ -58,6 +58,12 @@ productController.updateChosenProduct = async (req: Request, res: Response) => {
 
     try {
         console.log('updateChosenProduct');
+        const id = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
+        console.log("id", id);  // req.params - id+id2
+
+        const result = await productService.updateChosenProduct(id, req.body);
+
+        res.status(HttpCode.OK).json({ data: result });
 
 
     } catch (err) {

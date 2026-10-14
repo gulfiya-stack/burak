@@ -34,7 +34,7 @@ routerAdmin.post(
     productController.createNewProduct);
 
 routerAdmin.post(
-    "/product/:id",
+    "/product/:id", //can be productId or any other :id/:id2
     restaurantController.verifyRestaurant,
     productController.updateChosenProduct);
 
