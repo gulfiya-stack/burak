@@ -9,7 +9,7 @@ const productService = new ProductService();
 
 productController.getAllProducts = async (req: Request, res: Response) => {
 
-    try {
+     try {
         console.log('getAllProducts');
         res.render("products");
 

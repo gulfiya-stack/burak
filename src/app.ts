@@ -10,7 +10,7 @@ import ConnectMongoDB from "connect-mongodb-session";
 import { T } from './libs/types/common';
 const MongoDBStore = ConnectMongoDB(session);
 
-const store = new MongoDBStore({
+const store = new MongoDBStore({        // TCP connection to MongoDB
     uri: String(process.env.MONGO_URL),
     collection: "sessions",
 });
@@ -25,7 +25,7 @@ app.use(morgan(MORGAN_FORMAT));
 // app.use(morgan(`:method :url :response-time [:status] \n`));
 
 /**2-SESSIONS**/
-app.use(
+app.use(                         // MIDDLEWARE PATTERN da TCP2 ishga tushadi
     session({
         secret: String(process.env.SESSION_SECRET),
         cookie: {
@@ -50,7 +50,7 @@ app.set("view engine", "ejs");
 app.use("/admin", routerAdmin); //EJS, BSSR
 app.use("/", router); // React // (Design) Middleware pattern
 // Goal1: SPA: REACT (REST API)
-// Goal2: BSSR: EJS
+// Goal2: BSSR: EJS 
 
 export default app; //module.exports = app; 
 

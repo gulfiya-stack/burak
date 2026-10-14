@@ -1,5 +1,6 @@
 import path from "path";
-import multer from "multer";
+import multer from "multer"; // clientdan HTTP request orqali multipart/form-data 
+// formatida yuborilgan fayllarni qabul qiladi, qayta ishlaydi va belgilangan joyga saqlash imkonini beradi.
 import { v4 } from "uuid";
 
 // Multer image uploader 
