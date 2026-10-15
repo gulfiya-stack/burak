@@ -46,6 +46,10 @@ class ProductService {
         id = shapeIntoMongooseObjectId(id);
         const result = await this.productModel
             .findOneAndUpdate({ _id: id }, input, { new: true })
+            // MongoDB'dan bitta productni topib, yangilaydigan Mongoose metodi.
+            //         { _id: id } = MongoDB'dagi _id qiymati biz yuborgan idga teng bo'lgan productni topadi.
+            // input = Topilgan productni Controllerdan kelgan yangi ma'lumotlar bilan yangilaydi.
+            // { new: true } = Yangilangan productning yangi holatini qaytaradi.
             .exec();
         if (!result) throw new Errors(HttpCode.NOT_MODIFIED, Message.UPDATE_FAILED);
 
