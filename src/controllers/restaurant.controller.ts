@@ -128,6 +128,9 @@ restaurantController.getUsers = async (
         const result = await memberService.getUsers();
         console.log("result: ", result);
         res.render("users", { users: result });
+        // users-shablon nomi users.ejs
+        // users: kalit nomi
+
 
     } catch (err) {
         console.log("Error, getUsers: ", err);

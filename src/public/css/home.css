@@ -1,67 +1,110 @@
-.home-container {
-  position: relative;
-  width: auto;
-  height: auto;
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: linear-gradient(-45deg, #110303f0, #dd6d04, #011c1afc, #7a6868);
+html,
+body {
+  margin: 0;
+  padding: 0;
 }
 
-.home-container a {
-  text-decoration: none;
-  color: #000000;
+.home-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: #080c12;
+}
+
+/* Animatsiya foni */
+.home-container .large-header {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: #080c12;
+  background-image: url("https://www.marcoguglie.it/Codepen/AnimatedHeaderBg/demo-1/img/demo-1-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+
+#demo-canvas {
+  display: block;
+}
+
+/* Markazdagi sarlavha */
+.home-container .main-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: calc(100% - 32px);
+  margin: 0;
+  padding: 0;
+
+  color: #f9f1e9;
+  font-size: clamp(32px, 5vw, 68px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  z-index: 2;
+}
+
+.home-container .main-title .thin {
+  font-weight: 200;
+}
+
+/* Sarlavhaning ostidagi menyu */
+.home-container .navigation-menu {
+  position: absolute;
+  top: calc(50% + 75px);
+  left: 0;
+  width: 100%;
+  padding: 0 16px;
+  box-sizing: border-box;
+
+  font-size: 40px;
+  font-family: monospace;
+  z-index: 10;
+}
+
+.home-container .navigation-menu .nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .home-container .nav-item a {
+  display: block;
+  padding: 10px 16px;
   color: #e3c08d;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.home-container .nav-item a:hover {
+  color: #ffffff;
 }
 
 .home-container .nav-item a.disabled {
   color: #898071;
 }
 
-.home-container .navigation-menu {
-  position: relative;
-  z-index: 10000;
-  color: #efefee;
-  font-size: 40px;
-  font-family: monospace;
-}
+/* Kichik ekranlar */
+@media (max-width: 600px) {
+  .home-container .navigation-menu {
+    font-size: 18px;
+  }
 
-.home-container .animation-frame {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 55px;
-}
+  .home-container .navigation-menu .nav {
+    gap: 8px;
+  }
 
-.home-container .animation-wrapper {
-  position: relative;
-  width: 775px;
-  height: 775px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.home-container .sphere-animation {
-  position: relative;
-  width: 580px;
-  height: 580px;
-}
-
-.home-container .sphere path {
-  fill: url(#sphereGradient);
-  stroke-width: 1px;
-  stroke: rgba(80, 80, 80, 0.35);
-  backface-visibility: hidden;
-}
-
-@media (min-width: 500px) {
-  .sphere path {
-    stroke-width: 0.4px;
+  .home-container .nav-item a {
+    padding: 8px 10px;
   }
 }

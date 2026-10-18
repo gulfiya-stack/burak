@@ -105,12 +105,17 @@ class MemberService {
         // result = ...; console.log(return)
     }
 
-    public async getUsers(): Promise<Member[]> {
+    public async getUsers(): Promise<Member[]>
+    // Member[]-> TypeScript 
+    // qaytadigan natijaning turini bilsin va unga mosligini tekshirsin
+    {
         const result = await this.memberModel
             .find({ memberType: MemberType.USER })
             .exec();
 
-        if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
+        // if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
+        // ishlamaydi chunki result[] deb qaytadi u ham bo'lsa truthy
+        // .find() ---> array qaytaradi
         return result;
 
     }
@@ -130,3 +135,14 @@ class MemberService {
 
 
 export default MemberService;
+
+
+
+
+// Database xatolari:
+/*
+ * Databasega ulanish yo‘q yoki ulanish uzilgan.
+Database vaqtida javob bermagan — timeout.
+Database foydalanuvchisida ma’lumotni o‘qish ruxsati yo‘q. 
+
+*/
