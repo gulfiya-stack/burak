@@ -1,24 +1,53 @@
+// TASK V
+
+// Stringdagi har bir harf necha marta takrorlanganini object sifatida qaytarsin.
+
+// Masalan: countChars("hello") return {h: 1, e: 1, l: 2, o: 1}
+
+function countChars(a: string) {
+    const res = a.split("");
+    const frequency = res.reduce<Record<string, number>>((acc, curr) => {
+        acc[curr] = (acc[curr] || 0) + 1;
+        return acc;
+    }, {});
+    console.log(frequency);
+    // const chars = a.split("");
+    // const result: Record<string, number> = {};
+    // for (let i = 0; i < chars.length; i++) {
+    //     let one = chars[i]
+    //     if (result[one] === undefined) {
+    //         result[one] = 1;
+    //     } else {
+    //         result[one] = result[one] + 1;
+    //     }
+    // }
+    // console.log(result);
+    // return result;
+
+}
+countChars("hello");
+
 // TASK T
 
 // Ikkita arrayni qabul qilib, ularni birlashtirib tartiblangan holda qaytarsin.
 
 // Masalan: mergeSortedArrays([0, 3, 4], [4, 6]) return [0, 3, 4, 4, 6]
 
-function mergeSortedArrays(array1: number[], array2: number[]): number[] {
-    let result: number[] = [];
+// function mergeSortedArrays(array1: number[], array2: number[]): number[] {
+//     let result: number[] = [];
 
-    for (let i = 0; i < array1.length; i++) {
-        result.push(array1[i]);
-    }
+//     for (let i = 0; i < array1.length; i++) {
+//         result.push(array1[i]);
+//     }
 
-    for (let i = 0; i < array2.length; i++) {
-        result.push(array2[i]);
-    }
-    console.log(result.sort((a, b) => a - b));
-    return result;
-}
+//     for (let i = 0; i < array2.length; i++) {
+//         result.push(array2[i]);
+//     }
+//     console.log(result.sort((a, b) => a - b));
+//     return result;
+// }
 
-mergeSortedArrays([0, 3, 4], [4, 6]);
+// mergeSortedArrays([0, 3, 4], [4, 6]);
 
 // [0, 3, 4, 4, 6]
 

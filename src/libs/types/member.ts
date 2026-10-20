@@ -46,7 +46,6 @@ export interface MemberUpdateInput {
     memberDesc?: string;
     memberImage?: string;
 
-
 }
 
 export interface AdminRequest extends Request {

@@ -51,10 +51,12 @@ restaurantController.getLogin = (req: Request, res: Response) => {
 restaurantController.processSignup = async (req: AdminRequest, res: Response) => {
     try {
         console.log('processSignup');
+        console.log("req.body: ", req.body);
         const file = req.file;
         console.log("file: ", file);
+
         // throw new Error("Forced Quit");
-        if (!file)
+        if (!file) // Multer file 
             throw new Errors(HttpCode.BAD_REQUEST, Message.SOMETHING_WENT_WRONG);
         const newMember: MemberInput = req.body;
         newMember.memberImage = file?.path.replace(/\\/g, "/");
