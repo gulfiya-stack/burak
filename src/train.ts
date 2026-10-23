@@ -1,31 +1,62 @@
+// TASK W
+
+// Arrayni berilgan uzunlikda bo'laklarga ajratib qaytarsin.
+
+// Masalan: chunkArray([1, 2, 3, 4, 5], 2) return [[1, 2], [3, 4], [5]]
+
+function chunkArray(arr: number[], size: number): number[][] {
+    const result: number[][] = [];
+    let chunk: number[] = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        chunk.push(arr[i]);
+
+        if (chunk.length === size) {
+            result.push(chunk);
+            chunk = [];
+        }
+    }
+
+    if (chunk.length > 0) {
+        result.push(chunk);
+    }
+    console.log(result);
+    return result;
+
+}
+
+chunkArray([1, 2, 3, 4, 5], 2);
+
+
+
 // TASK V
 
 // Stringdagi har bir harf necha marta takrorlanganini object sifatida qaytarsin.
 
 // Masalan: countChars("hello") return {h: 1, e: 1, l: 2, o: 1}
 
-function countChars(a: string) {
-    const res = a.split("");
-    const frequency = res.reduce<Record<string, number>>((acc, curr) => {
-        acc[curr] = (acc[curr] || 0) + 1;
-        return acc;
-    }, {});
-    console.log(frequency);
-    // const chars = a.split("");
-    // const result: Record<string, number> = {};
-    // for (let i = 0; i < chars.length; i++) {
-    //     let one = chars[i]
-    //     if (result[one] === undefined) {
-    //         result[one] = 1;
-    //     } else {
-    //         result[one] = result[one] + 1;
-    //     }
-    // }
-    // console.log(result);
-    // return result;
+// function countChars(a: string) {
+//     const res = a.split("");
+//     const frequency = res.reduce<Record<string, number>>((acc, curr) => {
+//         acc[curr] = (acc[curr] || 0) + 1;
+//         return acc;
+//     }, {});
+//     console.log(frequency);
+// const chars = a.split("");
+// const result: Record<string, number> = {};
+// for (let i = 0; i < chars.length; i++) {
+//     let one = chars[i]
+//     if (result[one] === undefined) {
+//         result[one] = 1;
+//     } else {
+//         result[one] = result[one] + 1;
+//     }
+// }
+// console.log(result);
+// return result;
 
-}
-countChars("hello");
+// }
+// countChars("hello");
 
 // TASK T
 
