@@ -11,8 +11,8 @@ $(function () {
         if (window.FileReader) {
             const uploadFile = $(this)[0].files[0];
             console.log("uploadFile: ", uploadFile);
-            const fileType = uploadFile["type"];
-            const validImageType = ["image/jpg", "image/jpeg", "image/png", "image/webp"];
+            const fileType = uploadFile["type"],
+                validImageType = ["image/jpg", "image/jpeg", "image/png", "image/webp"];
             if (!validImageType.includes(fileType)) {
                 alert("Please insert only jpg/jpeg/png/webp formats!");
             } else {
