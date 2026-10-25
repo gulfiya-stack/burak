@@ -1,31 +1,54 @@
+// TASK X
+
+// Object tarkibida (nested bo'lsa ham) berilgan kalit necha marta takrorlanganini sanang.
+
+// Masalan: countOccurrences({model: "A", s: {model: "B"}}, "model") return 2
+
+function countOccurrences(obj: Record<string, unknown>, key: string, depth = 0): number {
+    let count = 0;
+    for (const k in obj) {
+        if (k === key) {
+            count += 1;
+        }
+        const value = obj[k];
+        if (typeof value === "object" && value !== null) {
+            count += countOccurrences(value as Record<string, unknown>, key, depth + 1);
+        }
+    }
+    if (depth === 0) console.log(count);
+    return count;
+}
+
+
+countOccurrences({ model: "A", s: { model: "B" } }, "model");
 // TASK W
 
 // Arrayni berilgan uzunlikda bo'laklarga ajratib qaytarsin.
 
 // Masalan: chunkArray([1, 2, 3, 4, 5], 2) return [[1, 2], [3, 4], [5]]
 
-function chunkArray(arr: number[], size: number): number[][] {
-    const result: number[][] = [];
-    let chunk: number[] = [];
+// function chunkArray(arr: number[], size: number): number[][] {
+//     const result: number[][] = [];
+//     let chunk: number[] = [];
 
-    for (let i = 0; i < arr.length; i++) {
-        chunk.push(arr[i]);
+//     for (let i = 0; i < arr.length; i++) {
+//         chunk.push(arr[i]);
 
-        if (chunk.length === size) {
-            result.push(chunk);
-            chunk = [];
-        }
-    }
+//         if (chunk.length === size) {
+//             result.push(chunk);
+//             chunk = [];
+//         }
+//     }
 
-    if (chunk.length > 0) {
-        result.push(chunk);
-    }
-    console.log(result);
-    return result;
+//     if (chunk.length > 0) {
+//         result.push(chunk);
+//     }
+//     console.log(result);
+//     return result;
 
-}
+// }
 
-chunkArray([1, 2, 3, 4, 5], 2);
+// chunkArray([1, 2, 3, 4, 5], 2);
 
 
 

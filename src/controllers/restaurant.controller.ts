@@ -88,17 +88,28 @@ restaurantController.processLogin = async (
         const input: LoginInput = req.body;
         const result = await memberService.processLogin(input);
         //TODO: SESSIONS AUTHENTICATION
+        /** 1. App.ts (backendda) session middleware ishlaydi, session va ID, va COOKIE yaratadi, req.session objectini yaratadi
+         * 2. Result member schema dan keladi keyin 
+         * 3. Req.session.member propertyga result dan kelgan malumotni qoshamiz 
+         * 4. MongoDB ga session ni saqlaymiz (req.session.save)
+         
+        */
         req.session.member = result;    // 1) Session created, 2) Session ID created, 3) Session ID sent to client as cookie
-        req.session.save(function () {
-            res.redirect("/admin/product/all");
+        // member qiymatini yozdik
+        // req.session save --> mongo db collection da saqlash
+        req.session.save(function () { // saqlash tugashini kutib keyin redirect qiladi
+            res.redirect("/admin/product/all"); // cookie headeri qoshilib ishlaydi, session middleware qo'shadi
 
         });
     } catch (err) {
         console.log("Error, processLogin: ", err);
         const message = err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG;
-        res.send(
+        // Error classimizdan yaratilganmi
+        // ? ha bo;lsa ee.message ni ol
+        // : aks holda umumiy xato yubor
+        res.send( //backend -> frontendga yuborish
             `<script>alert("${message}"); window.location.replace("admin/login")</script>`
-        );
+        ); //tradiotional api
     }
 
 };

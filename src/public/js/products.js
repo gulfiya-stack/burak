@@ -1,6 +1,7 @@
 console.log("Products frontend javascript file");
 
 $(function () {
+    // Drink tanlanganda
     $(".product-collection").on("change", () => {
         const selectedValue = $(".product-collection").val();
         if (selectedValue === "DRINK") {
@@ -11,15 +12,15 @@ $(function () {
             $("#product-collection").show();
         }
     });
-
+    // forma ochish
     $("#process-btn").on("click", () => {
         $(".dish-container").slideToggle(500);
         $("#process-btn").css("display", "none");
     });
-
+    // forma yopish
     $("#cancel-btn").on("click", (e) => {
         e.preventDefault();
-        $(".dish-container").slideToggle(500);
+        $(".dish-container").slideToggle(500); //animatsiya bilan yarim sekund
         $("#process-btn").show();
     });
 
@@ -70,12 +71,15 @@ function validateForm() {
     }
 
 }
-
+// Bu qism frontenddan backendga 
+// request yuboradi va MongoDBdagi product statusini yangilashga urinadi.
 function previewFileHandler(input, order) {
     const imgClassName = input.className;
     console.log("input: ", input);
 
     const file = $(`.${imgClassName}`).get(0).files[0];
+    // HTMLdagi input elementni class 
+    // orqali topib, foydalanuvchi tanlagan birinchi faylni oladi
     const fileType = file['type'];
     const validImageType = ["image/jpg", "image/jpeg", "image/png", "image/webp"];
 

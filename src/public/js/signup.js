@@ -1,7 +1,7 @@
 
 
 console.log("Signup frontend javascript file");
-
+// preview va format tekshirish
 
 $(function () {
     const fileTarget = $(".file-box .upload-hidden");
