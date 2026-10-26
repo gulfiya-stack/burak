@@ -1,26 +1,49 @@
+// TASK Y
+
+// Ikkala arrayda ham ishtirok etgan bir xil qiymatlarni qaytarsin.
+
+// Masalan: findIntersection([1, 2, 3], [3, 2, 0]) return [2, 3]
+
+function findIntersection(a: number[], b: number[]): number[] {
+    const result: number[] = [];
+
+    a.forEach((item) => {
+        if (b.includes(item) && !result.includes(item)) {
+            result.push(item);
+        }
+
+    })
+    console.log(result);
+    return result;
+}
+
+findIntersection([1, 2, 3], [3, 2, 0]);
+findIntersection([2, 2, 3], [3, 2, 0]);
+
+
+
 // TASK X
 
 // Object tarkibida (nested bo'lsa ham) berilgan kalit necha marta takrorlanganini sanang.
 
 // Masalan: countOccurrences({model: "A", s: {model: "B"}}, "model") return 2
 
-function countOccurrences(obj: Record<string, unknown>, key: string, depth = 0): number {
-    let count = 0;
-    for (const k in obj) {
-        if (k === key) {
-            count += 1;
-        }
-        const value = obj[k];
-        if (typeof value === "object" && value !== null) {
-            count += countOccurrences(value as Record<string, unknown>, key, depth + 1);
-        }
-    }
-    if (depth === 0) console.log(count);
-    return count;
-}
+// function countOccurrences(obj: Record<string, unknown>, key: string, depth = 0): number {
+//     let count = 0;
+//     for (const k in obj) {
+//         if (k === key) {
+//             count += 1;
+//         }
+//         const value = obj[k];
+//         if (typeof value === "object" && value !== null) {
+//             count += countOccurrences(value as Record<string, unknown>, key, depth + 1);
+//         }
+//     }
+//     if (depth === 0) console.log(count);
+//     return count;
+// }
 
-
-countOccurrences({ model: "A", s: { model: "B" } }, "model");
+// countOccurrences({ model: "A", s: { model: "B" } }, "model");
 // TASK W
 
 // Arrayni berilgan uzunlikda bo'laklarga ajratib qaytarsin.
