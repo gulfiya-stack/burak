@@ -1,24 +1,45 @@
+// TASK Z
+
+// Array tarkibidagi juft sonlar yig'indisini hisoblab qaytarsin.
+
+// Masalan: sumEvens([1, 2, 3]) return 2
+
+function sumEvens(a: number[]) {
+    let even = 0;
+    for (let i = 0; i < a.length; i++) {
+        if (a[i] % 2 === 0) {
+            even += a[i];
+        }
+    }
+
+    console.log(even);
+    return even;
+
+}
+
+sumEvens([1, 2, 3])
+
 // TASK Y
 
 // Ikkala arrayda ham ishtirok etgan bir xil qiymatlarni qaytarsin.
 
 // Masalan: findIntersection([1, 2, 3], [3, 2, 0]) return [2, 3]
 
-function findIntersection(a: number[], b: number[]): number[] {
-    const result: number[] = [];
+// function findIntersection(a: number[], b: number[]): number[] {
+//     const result: number[] = [];
 
-    a.forEach((item) => {
-        if (b.includes(item) && !result.includes(item)) {
-            result.push(item);
-        }
+//     a.forEach((item) => {
+//         if (b.includes(item) && !result.includes(item)) {
+//             result.push(item);
+//         }
 
-    })
-    console.log(result);
-    return result;
-}
+//     })
+//     console.log(result);
+//     return result;
+// }
 
-findIntersection([1, 2, 3], [3, 2, 0]);
-findIntersection([2, 2, 3], [3, 2, 0]);
+// findIntersection([1, 2, 3], [3, 2, 0]);
+// findIntersection([2, 2, 3], [3, 2, 0]);
 
 
 
