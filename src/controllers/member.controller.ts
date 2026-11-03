@@ -4,8 +4,10 @@ import { MemberType } from "../libs/enums/member.enum";
 import { LoginInput, Member, MemberInput } from "../libs/types/member";
 import MemberService from "../models/Member.service";
 import Errors from "../libs/Errors";
+import AuthService from "../models/Auth.service";
 const memberController: T = {};
 const memberService = new MemberService();
+const authService = new AuthService();
 //REACT
 
 
@@ -18,8 +20,9 @@ memberController.signup = async (req: Request, res: Response) => {
 
         const input: MemberInput = req.body,
             result: Member = await memberService.signup(input);
+        const token = await authService.createToken(result);
         // TODO: TOKEN AUTHENTICATION 
-
+        console.log('token=====> ', token);
         res.json({ member: result });
     } catch (err) {
         console.log("Error, Signup: ", err);
@@ -36,7 +39,11 @@ memberController.login = async (req: Request, res: Response) => {
         console.log(req.body);
         const input: LoginInput = req.body,
             result = await memberService.login(input);
+        console.log('login result: ', result);
         // TODO: TOKEN AUTHENTICATION
+        const token = await authService.createToken(result);
+        console.log('token=> ', token);
+
         res.json({ member: result });
     } catch (err) {
         console.log("Error, processLogin: ", err);
