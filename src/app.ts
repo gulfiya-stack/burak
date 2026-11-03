@@ -3,6 +3,7 @@ import path from 'path';
 import router from "./router";
 import routerAdmin from "./router-admin";
 import morgan from "morgan";
+import cookieParser from "cookie-parser";
 import { MORGAN_FORMAT } from './libs/config';
 
 import session from "express-session";
@@ -24,6 +25,7 @@ app.use(express.static(path.join(__dirname, "public")));
 // public ni brauzer orqali olishga ochiqlayabmiz
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cookieParser());
 app.use(morgan(MORGAN_FORMAT));
 // app.use(morgan(`:method :url :response-time [:status] \n`));
 
