@@ -24,19 +24,26 @@ class AuthService {
     }
 
     public async checkAuth(token: string): Promise<Member> {
-        const result = (await jwt.verify(
-            token,
-            this.secretToken
-        )) as Member;
-        console.log(`--- [AUTH] memberNick: ${result.memberNick} ---`);
 
-        return result;
+        try {
+            const result = (await jwt.verify(
+                token,
+                this.secretToken
+            )) as Member;
+            console.log(`--- [AUTH] memberNick: ${result.memberNick} ---`);
+
+            return result;
+
+        }
+
+        catch {
+            throw new Errors(HttpCode.UNAUTHORIZED, Message.NOT_AUTHENTICATED);
+
+        }
+
 
     }
-
-
 }
-
 // Mavjud bolgan TOKEN ichidan member malumotlarini decode (chiqarib berish--> token into {object}) qilish uchun.
 
 

@@ -48,6 +48,16 @@ export interface MemberUpdateInput {
 
 }
 
+// req by default NO member property, so we need to extend it to include member property
+
+export interface ExtendedRequest extends Request {
+    member: Member;
+    file: Express.Multer.File;
+    files: Express.Multer.File[];
+
+}
+
+
 export interface AdminRequest extends Request {
     member: Member;
     session: Session & { member: Member };
