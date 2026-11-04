@@ -3,7 +3,7 @@ import { T } from "../libs/types/common"; // {T, test}
 import { MemberType } from "../libs/enums/member.enum";
 import { LoginInput, Member, MemberInput } from "../libs/types/member";
 import MemberService from "../models/Member.service";
-import Errors, { HttpCode } from "../libs/Errors";
+import Errors, { HttpCode, Message } from "../libs/Errors";
 import AuthService from "../models/Auth.service";
 import { AUTH_TIMER } from "../libs/config";
 const memberController: T = {};
@@ -45,7 +45,7 @@ memberController.signup = async (req: Request, res: Response) => {
 memberController.login = async (req: Request, res: Response) => {
     try {
         console.log('login');
-        console.log(req.body);
+        console.log("req.body => ", req.body);
         const input: LoginInput = req.body,
             result = await memberService.login(input);
         console.log('login result: ', result);
@@ -60,13 +60,34 @@ memberController.login = async (req: Request, res: Response) => {
                 httpOnly: false
             }
         );
-        res.status(HttpCode.OK).json({ member: result, accessToken: token });
+        res.status(HttpCode.OK).json({ memberRES: result, accessTokenIS: token });
     } catch (err) {
         console.log("Error, processLogin: ", err);
         if (err instanceof Errors) res.status(err.code).json(err);
         else res.status(Errors.standard.code).json(Errors.standard.code);
     }
 
+};
+
+memberController.verifyAuth = async (req: Request, res: Response) => {
+    try {
+        let member = null;
+        const token = req.cookies["accessToken"];
+        if (token) member = await authService.checkAuth(token);
+
+        if (!member) {
+            throw new Errors(HttpCode.UNAUTHORIZED, Message.NOT_AUTHENTICATED);
+        }
+        console.log("member: ", member);
+        res.status(HttpCode.OK).json({ member: member });
+
+
+    }
+    catch (err) {
+        console.log("Error, verifyAuth: ", err);
+        if (err instanceof Errors) res.status(err.code).json(err);
+        else res.status(Errors.standard.code).json(Errors.standard);
+    }
 };
 
 export default memberController;
