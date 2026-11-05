@@ -51,7 +51,10 @@ memberController.login = async (req: Request, res: Response) => {
         console.log('login result: ', result);
         // TODO: TOKEN AUTHENTICATION
         const token = await authService.createToken(result);
+        // member info => to token payload
         console.log('token=> ', token);
+
+        // Token ni cookie ga COOKIE PARSER orqali saqlash 
         res.cookie(
             "accessToken",
             token,
@@ -82,6 +85,26 @@ memberController.getMemberDetail = async (req: ExtendedRequest, res: Response) =
         else res.status(Errors.standard.code).json(Errors.standard);
     }
 
+};
+
+memberController.updateMember = async (req: ExtendedRequest, res: Response) => {
+    try {
+        console.log("updateMember");
+        const input = req.body;
+        if (req.file) input.memberImage = req.file.path.replace(/\\/, "/");
+        const result = await memberService.updateMember(req.member, input);
+
+        res.status(HttpCode.OK).json(result);
+
+
+    }
+    catch (err) {
+        console.log("Error, updateMember: ", err);
+        if (err instanceof Errors) res.status(err.code).json(err);
+        else res.status(Errors.standard.code).json(Errors.standard);
+
+
+    }
 }
 
 memberController.logout = (req: ExtendedRequest, res: Response) => {

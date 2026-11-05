@@ -23,6 +23,7 @@ const app = express();
 console.log("dirname: ", __dirname);
 app.use(express.static(path.join(__dirname, "public")));
 // public ni brauzer orqali olishga ochiqlayabmiz
+app.use("/uploads", express.static("./uploads"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
