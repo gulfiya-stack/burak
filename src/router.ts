@@ -23,6 +23,11 @@ router.post(
     uploader("members").single("memberImage"), // uploads/members/ folderga saqlash
     memberController.updateMember
 );
+
+router.get(
+    "/member/top-users",
+    memberController.getTopUsers
+);
 /** Product **/
 
 /** Order **/
