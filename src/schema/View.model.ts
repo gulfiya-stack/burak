@@ -10,13 +10,13 @@ const viewSchema = new Schema(
         },
 
         memberId: {
-            type: Schema.Types.ObjectId,
+            type: Schema.Types.ObjectId, //memberId
             required: true,
-            ref: "Member",
+            ref: "Member", //reference to Member Schema 
         },
 
         viewRefId: {
-            type: Schema.Types.ObjectId,
+            type: Schema.Types.ObjectId, //productId
             required: true,
         },
     },

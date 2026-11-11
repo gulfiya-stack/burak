@@ -12,7 +12,7 @@ import ViewService from "./View.service";
 
 class ProductService {
     private readonly productModel;
-    viewService: any;
+    public viewService;
     constructor() {
         this.productModel = ProductModel;
         this.viewService = new ViewService();
